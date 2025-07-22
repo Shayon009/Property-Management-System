@@ -1,0 +1,41 @@
+===============================================
+🔧 NETBEANS FXML FIX - SOLUTION
+===============================================
+
+PROBLEM: NetBeans ant run-single shows "Location is required" error
+CAUSE: FXML files are not copied to build directory during NetBeans build
+
+✅ IMMEDIATE SOLUTION (Run this before using NetBeans):
+----------------------------------------------------
+1. Open Command Prompt/PowerShell in project directory
+2. Run: .\copy_fxml.bat
+3. Now you can run from NetBeans (F6 or Run menu)
+
+✅ PERMANENT SOLUTION (Already Applied):
+---------------------------------------
+Modified build.xml with custom targets:
+- -post-compile: Copies FXML after compilation
+- -pre-run: Ensures FXML files before running
+- -pre-run-single: Copies FXML for single file execution
+
+📋 TO USE NETBEANS NOW:
+----------------------
+1. Run .\copy_fxml.bat ONCE
+2. Use NetBeans normally (Run Main File, F6, etc.)
+3. If error persists, run copy_fxml.bat again
+
+🎯 ALTERNATIVE - USE BATCH FILE:
+-------------------------------
+Instead of NetBeans, run: .\run.bat
+- Automatically handles FXML copying
+- Compiles and runs application
+- More reliable than NetBeans for this project
+
+💡 WHY THIS HAPPENS:
+-------------------
+NetBeans JavaFX projects in newer Java versions have 
+resource loading issues with FXML files. The build 
+process compiles .java files but doesn't automatically
+copy .fxml resources to the output directory.
+
+===============================================

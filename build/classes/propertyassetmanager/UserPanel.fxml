@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="propertyassetmanager.UserPanelController">
+    <!-- Header with user info and logout -->
+    <HBox style="-fx-padding: 10; -fx-background-color: #e8f4fd; -fx-alignment: center-left;">
+        <Label fx:id="welcomeLabel" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c5aa0;"/>
+        <HBox style="-fx-alignment: center-right;" HBox.hgrow="ALWAYS">
+            <Button fx:id="logoutBtn" text="Logout" onAction="#logout" style="-fx-background-color: #ff6b6b; -fx-text-fill: white;"/>
+        </HBox>
+    </HBox>
+    
+    <!-- Information Panel -->
+    <HBox style="-fx-padding: 10; -fx-background-color: #fff3cd; -fx-alignment: center;">
+        <Label text="User View - You have read-only access to view property information" 
+               style="-fx-font-size: 12px; -fx-text-fill: #856404;"/>
+    </HBox>
+    
+    <TabPane fx:id="tabPane">
+        <Tab text="View Buildings">
+            <VBox>
+                <HBox style="-fx-padding: 10;">
+                    <Label text="Buildings in the System:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                </HBox>
+                <TableView fx:id="buildingTable">
+                    <columns>
+                        <TableColumn fx:id="buildingIdCol" text="ID"/>
+                        <TableColumn fx:id="buildingNameCol" text="Name"/>
+                        <TableColumn fx:id="buildingCreatedCol" text="Created"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="View Rooms">
+            <VBox>
+                <HBox style="-fx-padding: 10;">
+                    <Label text="Rooms in the System:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                </HBox>
+                <TableView fx:id="roomTable">
+                    <columns>
+                        <TableColumn fx:id="roomIdCol" text="ID"/>
+                        <TableColumn fx:id="roomNameCol" text="Name"/>
+                        <TableColumn fx:id="roomTypeCol" text="Type"/>
+                        <TableColumn fx:id="roomBuildingCol" text="Building"/>
+                        <TableColumn fx:id="roomAvailabilityCol" text="Available"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="View Assets">
+            <VBox>
+                <HBox style="-fx-padding: 10;">
+                    <Label text="Assets in the System:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                </HBox>
+                <TableView fx:id="assetTable">
+                    <columns>
+                        <TableColumn fx:id="assetIdCol" text="ID"/>
+                        <TableColumn fx:id="assetNameCol" text="Name"/>
+                        <TableColumn fx:id="assetTypeCol" text="Type"/>
+                        <TableColumn fx:id="assetRoomCol" text="Room"/>
+                        <TableColumn fx:id="assetConditionCol" text="Condition"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Search">
+            <VBox>
+                <HBox style="-fx-padding: 10;">
+                    <TextField fx:id="searchField" promptText="Search by Name or ID"/>
+                    <Button fx:id="searchBtn" text="Search" onAction="#search"/>
+                </HBox>
+                <TableView fx:id="searchTable">
+                    <columns>
+                        <TableColumn fx:id="searchIdCol" text="ID"/>
+                        <TableColumn fx:id="searchNameCol" text="Name"/>
+                        <TableColumn fx:id="searchTypeCol" text="Type"/>
+                        <TableColumn fx:id="searchDetailsCol" text="Details"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox> 

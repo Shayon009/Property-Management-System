@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="propertyassetmanager.MainController">
+    <!-- Header with user info and logout -->
+    <HBox style="-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-alignment: center-left;">
+        <Label fx:id="userInfoLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+        <HBox style="-fx-alignment: center-right;" HBox.hgrow="ALWAYS">
+            <Button fx:id="logoutBtn" text="Logout" onAction="#logout" style="-fx-background-color: #ff6b6b; -fx-text-fill: white;"/>
+        </HBox>
+    </HBox>
+    
+    <TabPane fx:id="tabPane">
+        <Tab text="Buildings">
+            <VBox>
+                <HBox>
+                    <TextField fx:id="buildingNameField" promptText="Building Name"/>
+                    <Button fx:id="addBuildingBtn" text="Add Building" onAction="#addBuilding"/>
+                </HBox>
+                <TableView fx:id="buildingTable">
+                    <columns>
+                        <TableColumn fx:id="buildingIdCol" text="ID"/>
+                        <TableColumn fx:id="buildingNameCol" text="Name"/>
+                    </columns>
+                </TableView>
+                <HBox>
+                    <Button fx:id="editBuildingBtn" text="Edit" onAction="#editBuilding"/>
+                    <Button fx:id="deleteBuildingBtn" text="Delete" onAction="#deleteBuilding"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Rooms">
+            <VBox>
+                <HBox>
+                    <TextField fx:id="roomNameField" promptText="Room Name"/>
+                    <ComboBox fx:id="roomTypeCombo" promptText="Room Type"/>
+                    <ComboBox fx:id="roomBuildingCombo" promptText="Building"/>
+                    <Button fx:id="addRoomBtn" text="Add Room" onAction="#addRoom"/>
+                </HBox>
+                <TableView fx:id="roomTable">
+                    <columns>
+                        <TableColumn fx:id="roomIdCol" text="ID"/>
+                        <TableColumn fx:id="roomNameCol" text="Name"/>
+                        <TableColumn fx:id="roomTypeCol" text="Type"/>
+                        <TableColumn fx:id="roomBuildingCol" text="Building"/>
+                        <TableColumn fx:id="roomAvailabilityCol" text="Available"/>
+                    </columns>
+                </TableView>
+                <HBox>
+                    <Button fx:id="editRoomBtn" text="Edit" onAction="#editRoom"/>
+                    <Button fx:id="deleteRoomBtn" text="Delete" onAction="#deleteRoom"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Assets">
+            <VBox>
+                <HBox>
+                    <TextField fx:id="assetNameField" promptText="Asset Name"/>
+                    <ComboBox fx:id="assetTypeCombo" promptText="Asset Type"/>
+                    <ComboBox fx:id="assetRoomCombo" promptText="Room"/>
+                    <ComboBox fx:id="assetConditionCombo" promptText="Condition"/>
+                    <Button fx:id="addAssetBtn" text="Add Asset" onAction="#addAsset"/>
+                </HBox>
+                <TableView fx:id="assetTable">
+                    <columns>
+                        <TableColumn fx:id="assetIdCol" text="ID"/>
+                        <TableColumn fx:id="assetNameCol" text="Name"/>
+                        <TableColumn fx:id="assetTypeCol" text="Type"/>
+                        <TableColumn fx:id="assetRoomCol" text="Room"/>
+                        <TableColumn fx:id="assetConditionCol" text="Condition"/>
+                    </columns>
+                </TableView>
+                <HBox>
+                    <Button fx:id="editAssetBtn" text="Edit" onAction="#editAsset"/>
+                    <Button fx:id="deleteAssetBtn" text="Delete" onAction="#deleteAsset"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Floor Plan">
+            <VBox>
+                <Button fx:id="openFloorPlanBtn" text="Open Floor Plan" onAction="#openFloorPlan"/>
+            </VBox>
+        </Tab>
+        <Tab text="Search &amp; Filter">
+            <VBox>
+                <HBox>
+                    <TextField fx:id="searchField" promptText="Search by Name or ID"/>
+                    <ComboBox fx:id="filterTypeCombo" promptText="Filter Type"/>
+                    <Button fx:id="searchBtn" text="Search" onAction="#search"/>
+                </HBox>
+                <TableView fx:id="searchTable">
+                    <columns>
+                        <TableColumn fx:id="searchIdCol" text="ID"/>
+                        <TableColumn fx:id="searchNameCol" text="Name"/>
+                        <TableColumn fx:id="searchTypeCol" text="Type"/>
+                        <TableColumn fx:id="searchDetailsCol" text="Details"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Backup">
+            <VBox>
+                <Button fx:id="backupBtn" text="Backup Database" onAction="#backupDatabase"/>
+                <Button fx:id="restoreBtn" text="Restore Database" onAction="#restoreDatabase"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
